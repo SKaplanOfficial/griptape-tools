@@ -1,4 +1,4 @@
-from griptape.tools import AwsCli
+from gptscripter.tools import AwsCli
 
 
 class TestAwsCli:

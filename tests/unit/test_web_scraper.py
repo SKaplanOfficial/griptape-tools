@@ -12,7 +12,7 @@ class TestWebScraper:
 
     @pytest.fixture
     def scraper(self):
-        from griptape.tools import WebScraper
+        from gptscripter.tools import WebScraper
 
         return WebScraper(openai_api_key=os.environ.get("OPENAI_API_KEY"))
 

@@ -1,5 +1,5 @@
 import json
-from griptape.tools import EmailClient
+from gptscripter.tools import EmailClient
 
 
 class TestEmailClient:

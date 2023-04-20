@@ -1,4 +1,4 @@
-from griptape.tools import Calculator
+from gptscripter.tools import Calculator
 
 
 class TestCalculator:

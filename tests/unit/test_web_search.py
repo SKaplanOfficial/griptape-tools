@@ -1,5 +1,5 @@
 import pytest
-from griptape.tools import WebSearch
+from gptscripter.tools import WebSearch
 from tests.utils import install_requirements
 
 

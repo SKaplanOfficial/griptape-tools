@@ -1,11 +1,11 @@
 import os
 import subprocess
 import sys
-import griptape
+import gptscripter
 
 
 def abs_tool_path(path: str) -> str:
-    return os.path.join(os.path.dirname(os.path.abspath(griptape.__file__)), "tools", path)
+    return os.path.join(os.path.dirname(os.path.abspath(gptscripter.__file__)), "tools", path)
 
 
 def install_requirements(tool: str) -> None:

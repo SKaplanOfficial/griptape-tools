@@ -1,22 +1,48 @@
-# griptape-tools
+# GPT Scripter
 
-[![Tests](https://github.com/griptape-ai/griptape-tools/actions/workflows/tests.yml/badge.svg)](https://github.com/griptape-ai/griptape-tools/actions/workflows/tests.yml)
-[![Docs](https://readthedocs.org/projects/griptape/badge/)](https://griptape.readthedocs.io/en/latest/griptape_tools/)
-[![PyPI Version](https://img.shields.io/pypi/v/griptape-tools.svg)](https://pypi.python.org/pypi/griptape-tools)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/gitbucket/gitbucket/blob/master/LICENSE)
-[![Griptape Discord](https://dcbadge.vercel.app/api/server/gnWRz88eym?compact=true&style=flat)](https://discord.gg/gnWRz88eym)
-
-This repo is a collection of official Griptape tools for the [Griptape Framework](https://github.com/griptape-ai/griptape). You can run Griptape tools in [griptape-flow](https://github.com/griptape-ai/griptape-flow), [LangChain](https://github.com/hwchase17/langchain), or as [ChatGPT Plugins](https://openai.com/blog/chatgpt-plugins).
+A collection of custom [Griptape](https://github.com/griptape-ai/griptape) tools for intelligently automating macOS using AppleScript.
 
 ## Documentation
 
-Please refer to [Griptape Docs](https://griptape.readthedocs.io) for:
+### AppleScriptRunner
 
-- Getting started guides. 
-- Core concepts and design overviews.
-- Examples.
-- Contribution guidelines.
+Completes tasks by generating and executing AppleScript code.
+
+```python
+from decouple import config
+from griptape.flow.memory import PipelineMemory
+from griptape.flow.steps import PromptStep, ToolkitStep
+from griptape.flow.structures import Pipeline
+from griptape.flow.utils import ToolLoader
+from griptape.flow.drivers import OpenAiPromptDriver
+from gptscripter.tools import AppleScriptRunner
+
+AppleScripter = AppleScriptRunner()
+
+pipeline = Pipeline(
+    memory=PipelineMemory(),
+    prompt_driver=OpenAiPromptDriver(
+        model="gpt-3.5-turbo",
+        api_key=config("OPENAI_API_KEY")
+    ),
+    tool_loader=ToolLoader(
+        tools=[AppleScripter]
+    )
+)
+
+pipeline.add_steps(
+    ToolkitStep(
+        tool_names=[AppleScripter.name]
+    ),
+    PromptStep(
+        "Summarize this: {{ input }}"
+    )
+)
+
+pipeline.run("Play Don't Stop Believin'.")
+print(pipeline.memory.runs[-1].output)
+```
 
 ## License
 
-Griptape Tools are available under the Apache 2.0 License.
+These tools are available under the Apache 2.0 License.

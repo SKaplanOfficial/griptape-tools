@@ -1,6 +1,6 @@
 import pytest
 from tests.utils import install_requirements
-from griptape.tools import SqlClient
+from gptscripter.tools import SqlClient
 import sqlite3
 
 
