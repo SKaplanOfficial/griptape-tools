@@ -1,5 +1,3 @@
-# GPT Scripter
-
 A collection of custom [Griptape](https://github.com/griptape-ai/griptape) tools for intelligently automating macOS using AppleScript.
 
 ## Documentation
@@ -39,6 +37,7 @@ pipeline.add_steps(
     )
 )
 
+# Play a song in Music.app
 pipeline.run("Play Don't Stop Believin'.")
 print(pipeline.memory.runs[-1].output)
 ```
