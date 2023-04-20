@@ -5,10 +5,10 @@ from schema import Schema
 class AppleScriptRunner(BaseTool):
     @action(config={
             "name": "run_applescript",
-            "description": "Can be used to complete one task at a time by running AppleScript code. Can play music by song name. Can create notes. Can create calendar events. Can send messages. Can open apps. Can do math.",
+            "description": "Can be used to run AppleScript code to accomplish different tasks (for example,  play music by song name, create notes, create calendar events, send messages, open apps, do math, etc.).",
             "schema": Schema(
                 str,
-                description="The AppleScript code to execute. Must be valid AppleScript."
+                description="Valid executable AppleScript code"
             )
         })
     def run_applescript(self, value: bytes) -> str:
